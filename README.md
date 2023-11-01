@@ -6,7 +6,8 @@
 - 
 
 ## Parte 1: Contador decimal.
-![Parcial SPD primera parte (1)](https://github.com/Milagros-avalos/primer-parcial-spd/assets/93937678/ffb33d87-3662-434f-8836-54af8170c68e)
+![Captura de pantalla 2023-11-01 183051](https://github.com/Milagros-avalos/primer-parcial-spd/assets/93937678/42c3c26b-d38e-4db1-a45f-418997e12615)
+
 
 
 ## Descripcion 
