@@ -5,8 +5,10 @@
 - Avalos, Juana de los Milagros
 - 
 
-## Parte 1: Contador decimal
-![Parcial SPD primera parte](https://github.com/Milagros-avalos/primer-parcial-spd/assets/93937678/a6d96c7d-f5a0-4d2f-b331-29c5b9f35a37)
+## Parte 1: Contador decimal.
+![Parcial SPD primera parte (1)](https://github.com/Milagros-avalos/primer-parcial-spd/assets/93937678/ffb33d87-3662-434f-8836-54af8170c68e)
+
 
 ## Descripcion 
+En este proyecto lo qeu se pidio fue resolver el ejercicio con multiplexacion. Ademas, se incorporaron tres botones que interactuan con los dos display de 7 segmentos, cambiando a maayor o menor y reseteando su valores
 
