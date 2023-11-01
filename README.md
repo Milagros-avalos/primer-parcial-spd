@@ -5,7 +5,7 @@
 - Avalos, Juana de los Milagros
 - 
 
-## Parte 1: Contador de 0 a 99 con Display 7 Segmentos y Multiplexación
+## Parte 1: Contador decimal
 ![Parcial SPD primera parte](https://github.com/Milagros-avalos/primer-parcial-spd/assets/93937678/a6d96c7d-f5a0-4d2f-b331-29c5b9f35a37)
 
 ## Descripcion 
