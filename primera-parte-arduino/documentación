@@ -1,0 +1,172 @@
+// Definiciones y constantes para los dígitos y botones
+#define A 12
+#define B 13
+#define C 7
+#define D 8
+#define E 9
+#define F 11
+#define G 10
+#define SUBE 4
+#define BAJA 3
+#define RESET 5
+#define UNIDAD A4
+#define DECENA A5 
+#define APAGADOS 0
+#define TIMEDISPLAYON 10
+
+// Declaración de variables de conteo y los botones 
+int countDigit = 0; 
+int sube = 1;
+int subePrevia = 1;
+int baja = 1;
+int bajaPrevia = 1;
+int reset = 1;
+int resetPrevia = 1;
+
+// Funcion que inicializa los pines y variables
+void setup()
+{
+  // Inicializamos los botones como entrada PullUp
+  pinMode(3, INPUT_PULLUP);
+  pinMode(4, INPUT_PULLUP);
+  pinMode(5, INPUT_PULLUP);
+  
+  // Se inicializa los pines de salida 
+  pinMode(7, OUTPUT);
+  pinMode(8, OUTPUT);
+  pinMode(9, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(11, OUTPUT);
+  pinMode(12, OUTPUT);
+  pinMode(13, OUTPUT);
+  pinMode(A4, OUTPUT);
+  pinMode(A5, OUTPUT);
+  
+  // Variable que inicializa el display en 0 
+  printDigit(0);
+}
+
+// Bucle principal
+void loop()
+{
+  // Lee si el botón es presionado
+  int pressed = keypressed();
+
+  // Incrementa el contador.
+  if (pressed == SUBE)
+  {
+    countDigit++;
+    if (countDigit > 99)
+      countDigit = 0;
+  }
+
+  // Decrementa el contador
+  else if (pressed == BAJA)
+  {
+    countDigit--;
+    if (countDigit < 0)
+      countDigit = 99;
+  }
+
+  // Reinicia el contador
+  else if (pressed == RESET)
+  {
+    countDigit = 0;
+  }
+  // Muestra el contador en el display
+  printCount(countDigit);
+}
+
+// Dibuja el número que se le pase por parámetro en los dos displays de 7 segmentos
+void printDigit(int digit)
+{
+  // Inicializa los LED en cero
+  digitalWrite(A, LOW);
+  digitalWrite(B, LOW);
+  digitalWrite(C, LOW);
+  digitalWrite(D, LOW);
+  digitalWrite(E, LOW);
+  digitalWrite(F, LOW);
+  digitalWrite(G, LOW);
+
+  // Según el número ingresado, enciende los LEDs correspondientes en el display de siete segmentos
+  switch (digit)
+  {
+    case 0:
+    {
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(C, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(E, HIGH);
+      digitalWrite(F, HIGH);
+      break;
+    }
+    // (Casos para los números del 1 al 9)
+  }
+}
+
+// Controla qué dígito del display está activo en un momento dado
+void prendeDigito(int digito)
+{
+  if (digito == UNIDAD)
+  {
+    digitalWrite(UNIDAD, LOW);
+    digitalWrite(DECENA, HIGH);
+    delay(TIMEDISPLAYON);
+  }
+  else if (digito == DECENA)
+  {
+    digitalWrite(UNIDAD, HIGH);
+    digitalWrite(DECENA, LOW);
+    delay(TIMEDISPLAYON);
+  }
+  else
+  {
+    digitalWrite(UNIDAD, HIGH);
+    digitalWrite(DECENA, HIGH);
+  }
+}  
+
+// Muestra el número en el display de dos dígitos
+void printCount(int count)
+{
+  prendeDigito(APAGADOS);
+  printDigit(count/10);
+  prendeDigito(DECENA);
+  prendeDigito(APAGADOS);
+  printDigit(count - 10 * ((int)count/10));
+  prendeDigito(UNIDAD);
+}
+
+// Verifica si alguno de los botones ha sido presionado y devuelve el valor correspondiente
+int keypressed(void)
+{
+  sube = digitalRead(SUBE);
+  baja = digitalRead(BAJA);
+  reset = digitalRead(RESET);
+  
+  if (sube)
+    subePrevia = 1;
+  if (baja)
+    bajaPrevia = 1;
+  if (reset)
+    resetPrevia = 1;
+  
+  if (sube == 0 && sube != subePrevia)
+  {
+    subePrevia = sube;
+    return SUBE;
+  }
+  if (baja == 0 && baja != bajaPrevia)
+  {
+    bajaPrevia = baja;
+    return BAJA;
+  }
+  if (reset == 0 && reset != resetPrevia)
+  {
+    resetPrevia = reset;
+    return RESET;
+  }
+  return 0;
+}
