@@ -13,3 +13,5 @@
 ## Descripcion 
 En este proyecto, se nos ha solicitado resolver el ejercicio utilizando técnicas de multiplexación. Además, hemos incorporado tres botones que interactúan con los dos displays de 7 segmentos. Estos botones permiten cambiar los valores a un número mayor o menor, así como también restablecerlos a su valor inicial.
 
+## Link al proyecto
+- [Proyecto Uno](https://github.com/Milagros-avalos/primer-parcial-spd/tree/main/primera-parte-arduino)
