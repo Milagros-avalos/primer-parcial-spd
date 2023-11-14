@@ -18,7 +18,8 @@ En este proyecto, se nos ha solicitado resolver el ejercicio utilizando técnica
 - [Proyecto en Tinkercad](https://www.tinkercad.com/things/4lF5EjrNUuO)
 
 ## Parte 2: Modificación con Interruptor Deslizante y Números Primos
-![Captura de pantalla 2023-11-06 185335](https://github.com/Milagros-avalos/primer-parcial-spd/assets/93937678/260ace12-3508-452c-a325-ec4e65d4a6fb)
+![Captura de pantalla 2023-11-13 210123](https://github.com/Milagros-avalos/primer-parcial-spd/assets/93937678/56eade9e-8002-47c4-bcae-52de4693e9f5)
+
 
 ## descripción 
 En este proyecto, se ha reemplazado uno de los botones por un interruptor (SWITCH_PIN) que alterna entre el contador decimal de 0 a 99 y el modo binario. Además, se ha agregado un motor CC (MOTOR_CC) que se activa solo cuando el interruptor está en la posición del contador binario.
@@ -27,3 +28,6 @@ El motor de corriente continua (CC) es un tipo de motor eléctrico que gira en u
 
 ## Link al proyecto 
 - [Proyecto en Tinkercad](https://www.tinkercad.com/things/5sJzC8whdPL)
+
+## Parte 3: Modificación según el Último Número de Documento
+![Captura de pantalla 2023-11-13 205949](https://github.com/Milagros-avalos/primer-parcial-spd/assets/93937678/ef940c71-3db7-4777-9ce4-44145b09fcc8)
