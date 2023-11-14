@@ -32,7 +32,8 @@ El motor de corriente continua (CC) es un tipo de motor eléctrico que gira en u
 - [Proyecto en Tinkercad](https://www.tinkercad.com/things/5sJzC8whdPL)
 
 ## Parte 3: Modificación según el Último Número de Documento
-![Captura de pantalla 2023-11-13 210123](https://github.com/Milagros-avalos/primer-parcial-spd/assets/93937678/ee7a2580-34c6-40c3-8b3a-4264ac8719b8)
+![Captura de pantalla 2023-11-13 205838](https://github.com/Milagros-avalos/primer-parcial-spd/assets/93937678/9334738b-202a-439c-83ef-2dccc9211266)
+
 
 ## Descripción 
 En este proyecto, asignado por el último dígito de mi DNI (4), implementé el fotodiodo para controlar el encendido de los LEDs en ambos displays, ajustándose a la exposición solar. Los LEDs se activan con luz suficiente y se apagan en condiciones de poca luz. Además, añadí un LED a la conexión del motor CC para aprovechar la corriente generada, mejorando así la eficiencia del sistema.
