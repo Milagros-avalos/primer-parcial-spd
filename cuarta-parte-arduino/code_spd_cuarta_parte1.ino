@@ -15,20 +15,16 @@
 #define MOTOR_CC A3
 #define FOTODIODO A0
 
-// Inicialización de variables
 int countDigit = 0;
 int sube = 1;
 int subePrevia = 1;
 int baja = 1;
 int bajaPrevia = 1;
 int lecturaFotodiodo = 0;
-int intensidadBrillo = 0;  // Comienza con el brillo máximo
+int intensidadBrillo = 0; 
 
-
-// Configuración inicial del sistema
 void setup()
 {
-  // Configuración de pines de entrada y salida
   pinMode(3, INPUT_PULLUP);
   pinMode(4, INPUT_PULLUP);
   pinMode(5, INPUT_PULLUP);
@@ -43,76 +39,57 @@ void setup()
   pinMode(A5, OUTPUT);
   pinMode(A3, OUTPUT);
   pinMode(A0, INPUT);
-  // Inicialización del motor en bajo y el display en 0
   digitalWrite(MOTOR_CC, LOW);  
   printDigit(0, 0);
   Serial.begin(9600);
 }
 
-// Función principal que se ejecuta en un bucle continuo
 void loop() {
-  //Lee el valor analógico del fotodiodo
   lecturaFotodiodo = analogRead(FOTODIODO);
-  //Ajusta la intensidad del brillo del LED en función de la lectura del fotodiodo
   int intensidadBrillo = map(lecturaFotodiodo, 0, 85, 0, 255);
-
-  // Lectura del estado del interruptor
   int switchState = digitalRead(SWITCH_PIN);
- 
-  // Comportamiento cuando el interruptor está en alto
+	
   if (switchState == HIGH) 
   {
     //PRENDE EL MOTOR CC EN CONTADOR
     digitalWrite(MOTOR_CC, HIGH);
     int estado = keypressed();
-    
-    // Aumento del contador si se presiona el botón de subida
     if (estado == SUBE){
       countDigit++;
       if (countDigit > 99)
         countDigit = 0;
       } 
-      // Disminución del contador si se presiona el botón de bajada
       else if (estado == BAJA)
       {
         countDigit--;
         if (countDigit < 0)
               countDigit = 99;
       } 
-      // Impresión del contador en el display y el estado de intencidad de brillo
       printCount(countDigit, intensidadBrillo);
   }
-  // Comportamiento cuando el interruptor está en bajo
   else if (switchState == LOW) 
   {	  //APAGA EL MOTOR CC EN NUMEROS PRIMOS
       digitalWrite(MOTOR_CC, LOW);
-    
-      // Verificación de si el número actual no es primo y obtención del siguiente primo
       if (!esPrimo(countDigit))
       {
         countDigit = sigPrimo(countDigit);
       }
       int estado = keypressed();
-      // Aumento del contador si se presiona el botón de subida
       if (estado == SUBE)
       {	
           countDigit++;
           if (countDigit > 99)
               countDigit = 0;
       } 
-      // Disminución del contador si se presiona el botón de bajada
       else if (estado == BAJA) 
       {
           countDigit = antPrimo(countDigit);
           if (countDigit < 0)
               countDigit = 99;
       }
-      // Impresión del contador en el display
       printCount(countDigit, intensidadBrillo);
   }
 }
-
-// Función para controlar el encendido de los dígitos del display
 void prendeDigito(int digito)
 {
   if (digito == UNIDAD)
@@ -133,8 +110,6 @@ void prendeDigito(int digito)
     digitalWrite(DECENA, HIGH);
   }
 }  
-
-// Función para imprimir el número en el display
 void printCount(int numero, int intensidadBrillo)
 {
   prendeDigito(APAGADOS);
@@ -145,8 +120,6 @@ void printCount(int numero, int intensidadBrillo)
   prendeDigito(UNIDAD);
 }
 
-/*Función para verificar si un número es primo, devuelve verdadero si el número es primo, 
-falso en caso contrario*/
 bool esPrimo(int numero) {
     if (numero <= 1) {
         return false;
@@ -164,14 +137,12 @@ bool esPrimo(int numero) {
     }
     return true;
 }
-
-// Función para obtener el siguiente número primo
 int sigPrimo(int inicio) {
   int siguiente = inicio + 1;
   while (true) {
     if (esPrimo(siguiente)) {
       if (siguiente > 97) {
-        return 2; //Retorna 2 ya que 0 y 1 no son un número primo
+        return 2;
       }
       return siguiente;
     }
@@ -179,7 +150,6 @@ int sigPrimo(int inicio) {
   }
 }
 
-// Función para obtener el número primo anterior
 int antPrimo(int inicio) {
   int anterior = inicio - 1;
   while (anterior >= 2) {
@@ -188,10 +158,9 @@ int antPrimo(int inicio) {
     }
     anterior--;
   }
-  return 97; //Retorna 97 ya que 0 y 1 no son un número primo
+  return 97;
 }
 
-// Función para imprimir un dígito en el display de 7 segmentos
 void printDigit(int digito, int intensidadBrillo)
 {
   digitalWrite(A, LOW);
@@ -213,7 +182,6 @@ void printDigit(int digito, int intensidadBrillo)
       digitalWrite(D, HIGH);
       digitalWrite(E, HIGH);
       digitalWrite(F, HIGH);
-      // Ajustar la intensidad de brillo para los segmentos encendidos
       analogWrite(A, intensidadBrillo);
       analogWrite(B, intensidadBrillo);
       analogWrite(C, intensidadBrillo);
@@ -237,7 +205,6 @@ void printDigit(int digito, int intensidadBrillo)
       digitalWrite(D, HIGH);
       digitalWrite(E, HIGH);
       digitalWrite(G, HIGH);
-      // Ajustar la intensidad de brillo para los segmentos encendidos
       analogWrite(A, intensidadBrillo);
       analogWrite(B, intensidadBrillo);
       analogWrite(D, intensidadBrillo);
@@ -252,7 +219,6 @@ void printDigit(int digito, int intensidadBrillo)
       digitalWrite(C, HIGH);
       digitalWrite(D, HIGH);
       digitalWrite(G, HIGH);
-      // Ajustar la intensidad de brillo para los segmentos encendidos
       analogWrite(A, intensidadBrillo);
       analogWrite(B, intensidadBrillo);
       analogWrite(C, intensidadBrillo);
@@ -266,7 +232,6 @@ void printDigit(int digito, int intensidadBrillo)
       digitalWrite(C, HIGH);
       digitalWrite(F, HIGH);
       digitalWrite(G, HIGH);
-      // Ajustar la intensidad de brillo para los segmentos encendidos
       analogWrite(B, intensidadBrillo);
       analogWrite(C, intensidadBrillo);
       analogWrite(F, intensidadBrillo);
@@ -280,7 +245,6 @@ void printDigit(int digito, int intensidadBrillo)
       digitalWrite(D, HIGH);
       digitalWrite(F, HIGH);
       digitalWrite(G, HIGH);
-      // Ajustar la intensidad de brillo para los segmentos encendidos
       analogWrite(A, intensidadBrillo);
       analogWrite(C, intensidadBrillo);
       analogWrite(D, intensidadBrillo);
@@ -296,7 +260,6 @@ void printDigit(int digito, int intensidadBrillo)
       digitalWrite(E, HIGH);
       digitalWrite(F, HIGH);
       digitalWrite(G, HIGH);
-      // Ajustar la intensidad de brillo para los segmentos encendidos
       analogWrite(A, intensidadBrillo);
       analogWrite(C, intensidadBrillo);
       analogWrite(D, intensidadBrillo);
@@ -310,7 +273,6 @@ void printDigit(int digito, int intensidadBrillo)
       digitalWrite(A, HIGH);
       digitalWrite(B, HIGH);
       digitalWrite(C, HIGH);
-      // Ajustar la intensidad de brillo para los segmentos encendidos
       analogWrite(A, intensidadBrillo);
       analogWrite(B, intensidadBrillo);
       analogWrite(C, intensidadBrillo);
@@ -325,7 +287,6 @@ void printDigit(int digito, int intensidadBrillo)
       digitalWrite(E, HIGH);
       digitalWrite(F, HIGH);
       digitalWrite(G, HIGH);
-      // Ajustar la intensidad de brillo para los segmentos encendidos
       analogWrite(A, intensidadBrillo);
       analogWrite(B, intensidadBrillo);
       analogWrite(C, intensidadBrillo);
@@ -343,7 +304,6 @@ void printDigit(int digito, int intensidadBrillo)
       digitalWrite(D, HIGH);
       digitalWrite(F, HIGH);
       digitalWrite(G, HIGH);
-      // Ajustar la intensidad de brillo para los segmentos encendidos
       analogWrite(A, intensidadBrillo);
       analogWrite(B, intensidadBrillo);
       analogWrite(C, intensidadBrillo);
@@ -355,8 +315,6 @@ void printDigit(int digito, int intensidadBrillo)
   }
 }
 
-/*Función para verificar si se presiona algún botón Devuelve 0 si no se ha presionado ningún botón, 
-SUBE si se presiona el botón de subir, BAJA si se presiona el botón de bajar */
 int keypressed(void)
 {
   sube = digitalRead(SUBE);
