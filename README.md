@@ -41,3 +41,10 @@ En este proyecto, asignado por el último dígito de mi DNI (4), implementé el 
 ## Link al proyecto 
 - [Proyecto en Tinkercad](https://www.tinkercad.com/things/bh2Gbb2ABvs-parcial-spd-tercera-parte)
 
+## Parte 4: Modificación según el Último Número de Documento
+![Captura de pantalla 2023-11-13 214802](https://github.com/Milagros-avalos/primer-parcial-spd/assets/93937678/2c22a58f-2fdf-4991-90bd-3ad7633196a9)
+
+## Descripción 
+En este proyecto, asignado por el último dígito de mi DNI (4), me correspondió la tarea de activar el motor solo si el interruptor deslizante se encuentra en la posición del contador. Para lograrlo, modifiqué el código, encendiendo el motor en el caso de contador y apagándolo en el caso de números primos.
+## Link al proyecto 
+- [Proyecto en Tinkercad](https://www.tinkercad.com/things/3KrPieTjkZO-parcial-cuarta-parte)
