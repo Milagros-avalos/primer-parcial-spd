@@ -23,7 +23,7 @@ En este caso, los dos displays de 7 segmentos comparten un conjunto común de l�
 ![Captura de pantalla 2023-11-13 210123](https://github.com/Milagros-avalos/primer-parcial-spd/assets/93937678/56eade9e-8002-47c4-bcae-52de4693e9f5)
 
 
-## descripción 
+## Descripción 
 En este proyecto, se ha reemplazado uno de los botones por un interruptor (SWITCH_PIN) que alterna entre el contador decimal de 0 a 99 y el modo binario. Además, se ha agregado un motor CC (MOTOR_CC) que se activa solo cuando el interruptor está en la posición del contador binario.
 
 El motor de corriente continua (CC) es un tipo de motor eléctrico que gira en una dirección específica en respuesta a la corriente en su circuito. Se utiliza comúnmente en una variedad de aplicaciones, como controles de velocidad, posicionamiento preciso y operaciones de control de posición.
